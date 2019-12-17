@@ -15,7 +15,21 @@ class AdminController extends AdminBase
         return true;
     }
 
+	public function actionAddStudent()
+	{
+			require_once(ROOT . '/app/views/admin/student.php');
+			return true;
+	}
 
+	public function actionAddSubject()
+	{
+			require_once(ROOT . '/app/views/admin/subject.php');
+			return true;
+	}
 
-
+	public function actionAddTeacher()
+	{
+			require_once(ROOT . '/app/views/admin/teacher.php');
+			return true;
+	}
 }

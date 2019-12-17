@@ -7,6 +7,9 @@ return array(
     'user/logout' => 'user/logout',   //выход из системы
 
     // Админпанель:
+    'admin/student' => 'admin/addStudent',
+    'admin/subject' => 'admin/addSubject',
+    'admin/teacher' => 'admin/addTeacher',
     'admin' => 'admin/index',  //админпанель
 
     //главная страница
