@@ -5,14 +5,14 @@ class UserController
     public function actionLogin()
     {
         // Переменные для формы
-        $email = false;
+        $login = false;
         $password = false;
 
         // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена
             // Получаем данные из формы
-            $email = $_POST['email'];
+            $login = $_POST['login'];
             $password = $_POST['password'];
 
             // Флаг ошибок
@@ -28,7 +28,7 @@ class UserController
             }
 
             // Проверяем существует ли пользователь
-            $userId = User::checkUserData($email, $password);
+            $userId = User::checkUserData($login, $password);
 
           //  echo $email.' '.$password;
             if ($userId == false) {
@@ -37,20 +37,15 @@ class UserController
             } else {
                 // Если данные правильные, запоминаем пользователя (сессия)
                 User::auth($userId);
-		$user = User::getUserById($userId);          
-		if ($user['role'] == '1') {
-		    header("Location: /admin");
-		} else {
-			header("Location: /");
-		}
-      		
-
-                } // Перенаправляем пользователя в закрытую часть - кабинет
-
-
-
+				$user = User::getUserById($userId);          
+				if ($user['role'] == '1') {
+					header("Location: /admin");
+				} else {
+					header("Location: /");
+				}
+        	} // Перенаправляем пользователя в закрытую часть - кабинет
         }
-
+	
         // Подключаем вид
         require_once(ROOT . '/app/views/user/login.php');
         return true;
@@ -58,12 +53,12 @@ class UserController
 
     public function actionRegister()
     {
-			if (isset($_POST['submit'])) {
-					$email = $_POST['email'];
-					$password = $_POST['password'];
+		if (isset($_POST['submit'])) {
+			$login = $_POST['login'];
+			$password = $_POST['password'];
 
-					RegisterUser::register($email, $password);
-			}
+			RegisterUser::register($login, $password);
+		}
 	    require_once(ROOT . '/app/views/user/register.php');
 	    return true;
     }

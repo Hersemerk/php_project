@@ -26,18 +26,18 @@ class User
      * @param string $password <p>Пароль</p>
      * @return mixed : integer user id or false
      */
-    public static function checkUserData($email, $password)
+    public static function checkUserData($login, $password)
     {
         // Соединение с БД
         $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'SELECT * FROM user WHERE user = :user AND pass = :pass';
+        $sql = 'SELECT * FROM user WHERE login = :login AND password = :password';
 
         // Получение результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
-        $result->bindParam(':user', $email, PDO::PARAM_STR);
-        $result->bindParam(':pass', $password, PDO::PARAM_INT);
+        $result->bindParam(':login', $login, PDO::PARAM_STR);
+        $result->bindParam(':password', $password, PDO::PARAM_STR);
         $result->execute();
 
         // Обращаемся к записи

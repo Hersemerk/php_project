@@ -3,7 +3,7 @@
 // Массив с параметрами подключения к базе данных
 return array(
     'host' => 'localhost',
-    'dbname' => 'php_project',
-    'user' => 'php_user',
+    'dbname' => 'rating_studentov',
+    'user' => 'variant31',
     'password' => 'admin',
 );
